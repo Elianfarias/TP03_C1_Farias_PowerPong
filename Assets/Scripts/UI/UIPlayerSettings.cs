@@ -7,13 +7,13 @@ public class UIPlayerSettings : MonoBehaviour
     [SerializeField] private GameObject panelSettings;
 
     [Header("Settings player 1")]
-    [SerializeField] private PlayerSettings player1Settings;
+    [SerializeField] private PlayerSettingsSO player1Settings;
     [SerializeField] private TMP_InputField inputName1;
     [SerializeField] private Slider sliderSpeedMovement1;
     [SerializeField] private TMP_Text txtSpeedValue1;
 
     [Header("Settings player 2")]
-    [SerializeField] private PlayerSettings player2Settings;
+    [SerializeField] private PlayerSettingsSO player2Settings;
     [SerializeField] private TMP_InputField inputName2;
     [SerializeField] private Slider sliderSpeedMovement2;
     [SerializeField] private TMP_Text txtSpeedValue2;
@@ -64,8 +64,8 @@ public class UIPlayerSettings : MonoBehaviour
         player1Settings.SetPlayerName(inputName1.text);
         player2Settings.SetPlayerName(inputName2.text);
 
-        player1Settings.SetSpeedMovement(sliderSpeedMovement1.value);
-        player2Settings.SetSpeedMovement(sliderSpeedMovement2.value);
+        player1Settings.SetSpeedMovement(sliderSpeedMovement1.value * 100);
+        player2Settings.SetSpeedMovement(sliderSpeedMovement2.value * 100);
 
         OnBackPause();
     }

@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c372154a11476cb47b5ea7624d1c894b, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f00df566b1e75348ab1315cf4090bf5, type: 3}
   m_Name: Player2Settings
   m_EditorClassIdentifier: 
   playerName: El PEPE
-  speedMovement: 0.04272145
-  speedRotation: 10
+  speedMovement: 1000

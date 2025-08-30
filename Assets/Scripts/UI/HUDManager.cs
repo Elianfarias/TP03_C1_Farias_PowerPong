@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class UIInterface : MonoBehaviour
 {
-    [SerializeField] private PlayerSettings player1Settings;
-    [SerializeField] private PlayerSettings player2Settings;
+    [SerializeField] private PlayerSettingsSO player1Settings;
+    [SerializeField] private PlayerSettingsSO player2Settings;
     [SerializeField] private TMP_Text player1Name;
     [SerializeField] private TMP_Text player2Name;
 
