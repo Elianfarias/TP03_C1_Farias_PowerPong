@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -16,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        transform.localScale = new Vector3(1, playerSettings.SizePlayer, 1);
+        GetComponent<SpriteRenderer>().color = playerSettings.ColorPlayer;
     }
 
     private void FixedUpdate()

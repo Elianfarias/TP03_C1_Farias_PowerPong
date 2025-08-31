@@ -9,6 +9,8 @@ TagManager:
   - Player2
   - ScorePlayer2
   - ScorePlayer1
+  - PowerUp
+  - Ball
   layers:
   - Default
   - TransparentFX

@@ -9,13 +9,20 @@ namespace Assets.Scripts
     {
         public static ScoreManager Instance { get; private set; }
 
+        [Header("Players Settings")]
+        [SerializeField] PlayerSettingsSO player1Settings;
+        [SerializeField] PlayerSettingsSO player2Settings;
         [Header("Players life images")]
         [SerializeField] private Image[] imgPlayer1Life;
         [SerializeField] private Image[] imgPlayer2Life;
-
         [Header("Game Timer")]
         [SerializeField] private TextMeshProUGUI textTimer;
         public int time = 60;
+        [Header("Speed Up")]
+        [SerializeField] private int speedUpEverySeconds = 15;
+        [SerializeField] private float speedIncrement = 0.5f;
+        [Header("Audio")]
+        [SerializeField] AudioClip audioClipWinSound;
 
         private int player1Life = 2, player2Life = 2;
 
@@ -53,22 +60,14 @@ namespace Assets.Scripts
 
         private void EndGame()
         {
-            if (player1Life < 0)
-                Debug.Log("Player 2 Wins!");
-            else if (player2Life < 0)
-                Debug.Log("Player 1 Wins!");
+            AudioController.Instance.StopBackgroundMusic();
+            AudioController.Instance.PlaySoundEffect(audioClipWinSound);
+            Time.timeScale = 0f;
 
-            ResetGame();
-        }
-
-        private void ResetGame()
-        {
-            player1Life = 2;
-            player2Life = 2;
-            foreach (var img in imgPlayer1Life)
-                img.gameObject.SetActive(true);
-            foreach (var img in imgPlayer2Life)
-                img.gameObject.SetActive(true);
+            if(player1Life == 0)
+                HUDManager.Instance.ShowPanelPlayerWon(player2Settings.PlayerName);
+            else
+                HUDManager.Instance.ShowPanelPlayerWon(player1Settings.PlayerName);
         }
 
         private void StartTimer()
@@ -82,9 +81,17 @@ namespace Assets.Scripts
             {
                 yield return new WaitForSeconds(1f);
                 time--;
+
+                if (time > 0 && time % speedUpEverySeconds == 0)
+                    BallMovement.Instance.ballSpeed += speedIncrement;
+
                 int minutes = (int)(time / 60);
                 int seconds = (int)(time % 60);
-                textTimer.text = minutes.ToString() + ":" + seconds.ToString();
+
+                if (seconds < 10)
+                    BallMovement.Instance.ballSpeed += 0.5f;
+
+                textTimer.text = minutes.ToString() + ":" + seconds.ToString("00");
             }
 
             EndGame();

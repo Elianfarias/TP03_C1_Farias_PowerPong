@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: Juan
   speedMovement: 1000
+  sizePlayer: 1
+  colorPlayer: {r: 1, g: 0, b: 0.521739, a: 1}

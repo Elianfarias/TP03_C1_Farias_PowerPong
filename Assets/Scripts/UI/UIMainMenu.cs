@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIMainMenu : MonoBehaviour
@@ -26,12 +27,16 @@ public class UIMainMenu : MonoBehaviour
         btnSettings.onClick.AddListener(OnSettingClicked);
         btnCredits.onClick.AddListener(OnCreditClicked);
         btnExit.onClick.AddListener(OnExitClicked);
-        btnBackCredits.onClick.AddListener(OnBackCredits);
+
+        if (btnBackCredits != null)
+            btnBackCredits.onClick.AddListener(OnBackCredits);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape)
+            && SceneManager.GetActiveScene().name == "InGame"
+            && !HUDManager.Instance.panelPlayerWon.activeSelf)
         {
             if (!panelMainMenu.activeSelf && isPause)
                 ToggleUIMainMenu();
@@ -45,19 +50,29 @@ public class UIMainMenu : MonoBehaviour
         btnStart.onClick.RemoveAllListeners();
         btnSettings.onClick.RemoveAllListeners();
         btnCredits.onClick.RemoveAllListeners();
-        btnBackCredits.onClick.RemoveAllListeners();
+
+        if (btnBackCredits != null)
+            btnBackCredits.onClick.RemoveAllListeners();
     }
 
     public void TogglePause()
     {
-        isPause = !isPause;
+        if (SceneManager.GetActiveScene().name == "InGame")
+        {
+            isPause = !isPause;
 
-        if (isPause)
-            Time.timeScale = 0f;
+            if (isPause)
+                Time.timeScale = 0f;
+            else
+                Time.timeScale = 1f;
+
+            ToggleUIMainMenu();
+        }
         else
-            Time.timeScale = 1f;
-
-        ToggleUIMainMenu();
+        {
+            SceneManager.LoadScene("InGame");
+            ToggleUIMainMenu();
+        }
     }
 
     public void ToggleUIMainMenu()
