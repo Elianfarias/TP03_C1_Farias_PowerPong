@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f00df566b1e75348ab1315cf4090bf5, type: 3}
   m_Name: Player2Settings
   m_EditorClassIdentifier: 
-  playerName: El PEPE
-  speedMovement: 1000
+  playerName: Player 2
+  speedMovement: 4825.001
   sizePlayer: 1
-  colorPlayer: {r: 0, g: 0, b: 0, a: 1}
+  colorPlayer: {r: 0.95294124, g: 0.7960785, b: 0.15686275, a: 1}
