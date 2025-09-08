@@ -41,13 +41,13 @@ public class BallMovement : MonoBehaviour
         if (collisionGO.CompareTag("Player1"))
         {
             lastTouchPlayer = PlayersEnum.Player1;
-            rb.AddForce(Vector2.right * ballSpeed, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.right * ballSpeed);
         }
 
         if (collisionGO.CompareTag("Player2"))
         {
             lastTouchPlayer = PlayersEnum.Player2;
-            rb.AddForce(Vector2.left * ballSpeed, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.left * ballSpeed);
         }
 
         if (collisionGO.CompareTag("ScorePlayer1"))

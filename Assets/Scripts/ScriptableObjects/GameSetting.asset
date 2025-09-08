@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f00df566b1e75348ab1315cf4090bf5, type: 3}
-  m_Name: Player2Settings
+  m_Script: {fileID: 11500000, guid: 0d10bc1dd99e1244d86c1d701bd897a1, type: 3}
+  m_Name: GameSetting
   m_EditorClassIdentifier: 
-  playerName: Player 2
-  speedMovement: 20
-  sizePlayer: 1
-  colorPlayer: {r: 0.15413107, g: 0.2047706, b: 0.93696463, a: 1}
+  timeSetting: 120

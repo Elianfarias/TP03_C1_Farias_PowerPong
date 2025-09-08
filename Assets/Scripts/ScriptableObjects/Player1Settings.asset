@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Player1Settings
   m_EditorClassIdentifier: 
   playerName: Player 1
-  speedMovement: 4825.001
+  speedMovement: 90000
   sizePlayer: 1
-  colorPlayer: {r: 0.13725491, g: 0.87843144, b: 0.8196079, a: 1}
+  colorPlayer: {r: 0.50676197, g: 0.80385137, b: 0.16574718, a: 1}

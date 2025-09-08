@@ -9,9 +9,11 @@ namespace Assets.Scripts
     {
         public static ScoreManager Instance { get; private set; }
 
+        [Header("Game Settings")]
+        [SerializeField] private GameSettingsSO gameSetting;
         [Header("Players Settings")]
-        [SerializeField] PlayerSettingsSO player1Settings;
-        [SerializeField] PlayerSettingsSO player2Settings;
+        [SerializeField] private PlayerSettingsSO player1Settings;
+        [SerializeField] private PlayerSettingsSO player2Settings;
         [Header("Players life images")]
         [SerializeField] private Image[] imgPlayer1Life;
         [SerializeField] private Image[] imgPlayer2Life;
@@ -28,6 +30,7 @@ namespace Assets.Scripts
 
         private void Awake()
         {
+            time = gameSetting.TimeSetting > 0 ? (int)gameSetting.TimeSetting : 60;
             Instance = this;
             StartTimer();
         }
